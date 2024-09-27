@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { TextField, Typography, Autocomplete, Button } from '@mui/material';
 import ActivityCard from '../components/ActivityCard';
 import countries from '../utils/countries';
-
+import { getSeason } from '../utils/getSeason';
 
 const HomePage: React.FC = () => {
     const [suggestion, setSuggestion] = useState('');
@@ -15,6 +15,7 @@ const HomePage: React.FC = () => {
     const generateInputValue = () => {
         return `Please generate a list of five to seven diverse activities for a full day (from 8 AM to 6 PM) in ${selectedCity}, ${selectedCountry}. 
         Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
+        Activities should be suitable for ${getSeason()}. Each activity should not be longer than 1 hour. Dont forget to include the time for lunch and travel between activities.
         Please separate different activities with '###.`;
     };
 
