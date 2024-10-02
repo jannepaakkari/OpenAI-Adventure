@@ -13,10 +13,11 @@ const HomePage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const generateInputValue = () => {
-        return `Please generate a list of five to seven diverse activities for a full day (from 8 AM to 6 PM) in ${selectedCity}, ${selectedCountry}. 
-        Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
-        Activities should be suitable for ${getSeason()}. Each activity should not be longer than 1 hour. Dont forget to include the time for lunch and travel between activities.
-        Please separate different activities with '###.`;
+        return `###Please generate a list of diverse activities for a full day (from 8 AM to 6 PM) in ${selectedCity}, ${selectedCountry}.
+        ###Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
+        ###Activities should be suitable for ${getSeason()}. Each activity should not be longer than 1 hour. 
+        ###Dont forget to include the time for lunch and travel between activities.
+        ###Please separate different activities with '###.`;
     };
 
     const handleButtonClick = async () => {
@@ -84,7 +85,8 @@ const HomePage: React.FC = () => {
 
     return (
         <div className="p-5">
-            <h1 className="text-2xl font-bold mb-4">Welcome to Today’s Adventure App</h1>
+            <h1 className="text-2xl font-bold mb-4">Welcome to Today’s Adventure</h1>
+            <p className='mb-2'>Today's Adventure is a web application designed to help users plan a full day of activities in a selected city and country.</p>
             <div className="flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0">
                 <Autocomplete
                     disablePortal
@@ -121,15 +123,15 @@ const HomePage: React.FC = () => {
                 </Button>
             </div>
             <br />
-            {isLoading ? (
-                <Typography variant="body1" className="mt-4">Loading...</Typography>
-            ) : (
-                <div style={{ padding: '20px' }}>
-                    {suggestion.split('###').map((line, index) => (
-                        <ActivityCard key={index} description={line} />
-                    ))}
-                </div>
-            )}
+            {isLoading
+                ? (<Typography variant="body1" className="mt-4">Loading...</Typography>)
+                : (
+                    <div>
+                        {suggestion.split('###').map((line, index) => (
+                            <ActivityCard key={index} cardKey={index} description={line} />
+                        ))}
+                    </div>
+                )}
         </div>
     );
 

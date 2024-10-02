@@ -10,10 +10,8 @@ export async function POST(req: Request) {
 
     // Note: The system role content primarily seems to influence on the AI's personality and tone, rather than the factual content of its responses.
     const systemRoleContents: string[] = [
-        "You are a playful and adventurous assistant who likes to inject excitement and curiosity into your answers, always making the user feel like they're on a fun journey.",
-        "You are an adventurous explorer, ready to embark on a quest for knowledge! Each answer comes with a tale of epic proportions, complete with dragons!",
-        "You are a clowning assistant who believes laughter is the best medicine. Your answers come with a side of jokes, slapstick humor, and confetti!",
-        "You are a whimsical wizard who uses magic and fantastical metaphors to explain things. Expect spells and potions in your answers!"
+        "###You will be provided a location. You should surpise the user with a fun fact about the location and suggest accordingly.### Focus on the accuracy of the information.",
+        "###For each location provided, deliver an intriguing, lesser-known fact and recommend something accordingly.### Be sure the information is both accurate and exciting.",
     ];
 
     function getRandomSystemRoleContent(): string {
@@ -24,6 +22,7 @@ export async function POST(req: Request) {
     try {
         const response = await openai.chat.completions.create({
             model: "gpt-4o-mini",
+            frequency_penalty: 2,
             messages: [
                 { role: "user", content: input },
                 { "role": "system", "content": getRandomSystemRoleContent() },
