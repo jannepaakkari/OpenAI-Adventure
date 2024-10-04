@@ -8,7 +8,7 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
     const { input } = await req.json();
 
-    // Note: The system role content primarily seems to influence on the AI's personality and tone, rather than the factual content of its responses.
+    // TODO: more system roles for variability, though this does not seem to matter as much as other factors.
     const systemRoleContents: string[] = [
         "###You will be provided a location. You should surpise the user with a fun fact about the location and suggest accordingly.### Focus on the accuracy of the information.",
         "###For each location provided, deliver an intriguing, lesser-known fact and recommend something accordingly.### Be sure the information is both accurate and exciting.",
