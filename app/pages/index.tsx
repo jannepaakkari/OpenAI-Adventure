@@ -25,6 +25,8 @@ const HomePage: React.FC = () => {
         if (citiesData) setCities(citiesData.data);
     }, [citiesData]);
 
+    // "" etc. can be used (then we clear the city), but eslint doesn't like it
+    // eslint-disable-next-line
     const handleCountryChange = (event: React.ChangeEvent<{}>, value: string | null) => {
         setSelectedCountry(value);
         if (value) {
