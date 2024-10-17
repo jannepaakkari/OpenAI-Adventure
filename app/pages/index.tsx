@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
         if (citiesData) setCities(citiesData.data);
     }, [citiesData]);
 
-    const handleCountryChange = (event: any, value: string | null) => {
+    const handleCountryChange = (event: React.ChangeEvent<{}>, value: string | null) => {
         setSelectedCountry(value);
         if (value) {
             makeRequest({ country: value });

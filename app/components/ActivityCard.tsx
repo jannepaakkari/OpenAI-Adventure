@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, CardMedia, Typography, Grid2 as Grid } from '@mui/material';
+import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 import morningImage from '../images/morning.jpg';
 import eveningImage from '../images/evening.jpg';
 import afternoonImage from '../images/afternoon.jpg';

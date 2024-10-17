@@ -5,7 +5,7 @@ const useFetch = <T>(url: string) => {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const makeRequest = useCallback(async (body: any) => {
+    const makeRequest = useCallback(async (body: Record<string, unknown>) => {
         setLoading(true);
         setError(null);
 
