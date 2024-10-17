@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { TextField, Typography, Autocomplete, Button } from '@mui/material';
+import { TextField, Typography, Autocomplete, Button, Grid2 as Grid } from '@mui/material';
 import ActivityCard from '../components/ActivityCard';
 import countries from '../utils/countries';
 import { getSeason } from '../utils/getSeason';
@@ -36,11 +36,9 @@ const HomePage: React.FC = () => {
     };
 
     const generateInputValue = () => (
-        `###Please generate a list of diverse activities for a full day (from 8 AM to 6 PM) in ${selectedCity}, ${selectedCountry}.
-        ###Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
-        ###Activities should be suitable for ${getSeason()}. Each activity should not be longer than 1 hour. 
-        ###Don't forget to include the time for lunch and travel between activities.
-        ###Please separate different activities with ###.`
+        `Please generate a list of diverse activities for morning, afternoon, evening and night ${selectedCity}, ${selectedCountry}.
+        Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
+        Activities should be suitable for ${getSeason()}.`
     );
 
     const onSubmit = () => makeSuggestionRequest({ input: generateInputValue() });
@@ -48,16 +46,22 @@ const HomePage: React.FC = () => {
     const renderResult = () => {
         if (isLoadingResult) return <Typography className='mb-1'>Loading...</Typography>;
         if (errorResult) return <Typography className='mb-1' color="error">{errorResult}</Typography>;
-        return suggestion?.choices?.[0]?.message.content.split('###').map((line, index) => (
-            <ActivityCard key={index} cardKey={index} description={line} />
-        ));
+        return (
+            <div>
+                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    {suggestion?.choices?.[0]?.message.content.split('###').map((line, index) => (
+                        <ActivityCard key={index} cardKey={index} description={line} />
+
+                    ))}
+                </Grid>
+
+            </div>
+        );
     };
 
     return (
         <div className="p-5">
-            <h1 className="text-2xl font-bold mb-4">Welcome to Today’s Adventure</h1>
-            <p className='mb-2'>Today's Adventure helps users plan a full day of activities in a selected city and country.</p>
-            <div className="flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0">
+            <div className="flex flex-col md:flex-row items-center md:space-x-5 space-y-5 md:space-y-0">
                 <Autocomplete
                     disablePortal
                     options={countries}
@@ -95,7 +99,7 @@ const HomePage: React.FC = () => {
                     Plan My Adventure
                 </Button>
             </div>
-            <div className='mb-1'>{renderResult()}</div>
+            <div className=' mt-4 mb-1'>{renderResult()}</div>
         </div>
     );
 };
