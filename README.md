@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Plan My Adventure project
 
-## Getting Started
+This is a simple proof of concept that uses OpenAI to suggest daily activities in user selected cities. The project serves as a personal side project where I aim to explore how effectively OpenAI can provide useful recommendations for this task.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Technologies](#technologies)
+- [Installation](#installation)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- NextJS
+    -> NodeJS, ReactJS, TypeScript
+- Tailwind CSS
+- GitHub Actions
+- OpenAI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+To install the Plan My Adventure project, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Clone the repository: git clone https://github.com/jannepaakkari/Adventure.git
+2. Navigate to the project directory.
+3. Install the dependencies: npm install
+4. Set your OpenAI API key as an environment variable. To do this, create a .env.local file in the root directory and add the following: OPENAI_API_KEY="your_key" (Note: This project does not include the .env.local file.)
+5. Start the development server: npm run dev
+6. Open http://localhost:3000 in your browser to view the application.
