@@ -1,6 +1,6 @@
 # Plan My Adventure project
 
-This is a simple proof of concept that uses OpenAI to suggest daily activities in user selected cities. The project serves as a personal side project where I aim to explore how effectively OpenAI can provide useful recommendations for this task.
+This is a simple proof of concept that uses OpenAI to suggest daily activities in user selected cities. The project serves as a personal side project where I aim to explore how effectively OpenAI can provide useful recommendations for this task. Can be deployed and demonstrated via Vercel.
 
 ## Table of Contents
 
@@ -11,6 +11,7 @@ This is a simple proof of concept that uses OpenAI to suggest daily activities i
 
 - NextJS
     -> NodeJS, ReactJS, TypeScript
+- Vercel (deployment)
 - Tailwind CSS
 - GitHub Actions
 - OpenAI

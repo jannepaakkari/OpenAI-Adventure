@@ -1,9 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
-import morningImage from '../images/morning.jpg';
-import eveningImage from '../images/evening.jpg';
-import afternoonImage from '../images/afternoon.jpg';
-import nightImage from '../images/night.jpg';
+import morningImage from '../images/morning.png';
+import eveningImage from '../images/evening.png';
+import afternoonImage from '../images/afternoon.png';
+import nightImage from '../images/night.png';
 
 
 interface ActivityCardProps {
@@ -36,10 +36,9 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ cardKey, description }) => 
     return (
         <div className='mb-1'>
 
-            <Card sx={{ maxWidth: 300, height: 500 }} className={cardClassName} variant="outlined">
+            <Card className={cardClassName} variant="outlined">
                 <CardMedia
                     component="img"
-                    height="194"
                     image={src}
                     alt={alt}
                 />
