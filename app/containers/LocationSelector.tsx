@@ -30,6 +30,7 @@ const LocationSelector: React.FC = () => {
     const handleCountryChange = (event: React.ChangeEvent<{}>, value: string | null) => {
         setSelectedCountry(value);
         if (value) {
+            setSelectedCity(null);
             makeRequest({ country: value });
         } else {
             setSelectedCity(null);
@@ -63,40 +64,46 @@ const LocationSelector: React.FC = () => {
 
     return (
         <>
-            <div className="flex flex-col md:flex-row items-center md:space-x-5 space-y-5 md:space-y-0">
+            <div>
                 <Autocomplete
                     disablePortal
+                    selectOnFocus
+                    autoComplete={false}
                     options={countries}
                     value={selectedCountry}
                     onChange={handleCountryChange}
                     sx={{
-                        width: 300,
                         '& .MuiInputBase-root': {
                             backgroundColor: 'white',
                         },
                     }}
                     renderInput={(params) => <TextField {...params} label="Country" />}
                 />
+                <br />
                 <Autocomplete
                     disablePortal
+                    freeSolo
+                    selectOnFocus
+                    handleHomeEndKeys
+                    autoComplete={false}
                     options={cities}
                     disabled={isLoadingCities}
-                    value={isLoadingCities ? 'Loading...' : selectedCity}
+                    value={selectedCity}
                     onChange={(e, value) => setSelectedCity(value)}
                     sx={{
-                        width: 300,
                         '& .MuiInputBase-root': {
                             backgroundColor: 'white',
                         },
                     }}
                     renderInput={(params) => <TextField {...params} label="City" />}
                 />
+                <br />
                 <Button
                     color="success"
                     variant="contained"
                     className="py-2 px-4 rounded"
                     onClick={onSubmit}
-                    disabled={!selectedCity || !selectedCountry || isLoadingResult || isLoadingCities}
+                    disabled={!selectedCountry || isLoadingResult || isLoadingCities}
                 >
                     Plan My Adventure
                 </Button>

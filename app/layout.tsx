@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Today’s Adventure App",
-  description: "App to help you find your next adventure",
+  title: "Plan my adventure",
+  description: "App to help you find your next adventure for the day",
 };
 
 export default function RootLayout({
