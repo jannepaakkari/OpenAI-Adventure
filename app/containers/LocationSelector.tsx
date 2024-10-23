@@ -95,7 +95,7 @@ const LocationSelector: React.FC = () => {
                             backgroundColor: 'white',
                         },
                     }}
-                    renderInput={(params) => <TextField {...params} label="City" />}
+                    renderInput={(params) => <TextField {...params} label="Location (i.e. city)" />}
                 />
                 <br />
                 <Button

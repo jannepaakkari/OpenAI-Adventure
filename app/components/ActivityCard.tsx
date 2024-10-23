@@ -20,11 +20,11 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ cardKey, description }) => 
 
     const getImageAndAltText = () => {
         switch (cardKey) {
-            case 1:
+            case 0:
                 return { src: morningImage.src, alt: 'Morning' };
-            case 2:
+            case 1:
                 return { src: eveningImage.src, alt: 'Evening' };
-            case 3:
+            case 2:
                 return { src: afternoonImage.src, alt: 'Afternoon' };
             default:
                 return { src: nightImage.src, alt: 'Night' };

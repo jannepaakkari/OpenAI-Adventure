@@ -15,6 +15,7 @@ This is a simple proof of concept that uses OpenAI to suggest daily activities i
 - Tailwind CSS
 - GitHub Actions
 - OpenAI
+- External API integrations
 - MaterialUI
 
 ## Installation
