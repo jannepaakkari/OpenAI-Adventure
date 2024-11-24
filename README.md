@@ -2,11 +2,6 @@
 
 This is a simple proof of concept that uses OpenAI to suggest daily activities in user selected cities. The project serves as a personal side project where I aim to explore how effectively OpenAI can provide useful recommendations for this task. Can be deployed and demonstrated via Vercel.
 
-## Table of Contents
-
-- [Technologies](#technologies)
-- [Installation](#installation)
-
 ## Technologies
 
 - NextJS
