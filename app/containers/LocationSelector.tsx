@@ -4,7 +4,7 @@ import { TextField, Typography, Autocomplete, Button, Grid2 as Grid } from '@mui
 import ActivityCard from '../components/ActivityCard';
 import countries from '../utils/countries';
 import { getSeason } from '../utils/getSeason';
-import useFetch from '../hooks/usePost';
+import usePost from '../hooks/usePost';
 import { OpenAIResponse } from '../interfaces/openAI';
 import { CitiesResponse } from '../interfaces/cities';
 
@@ -13,11 +13,11 @@ const LocationSelector: React.FC = () => {
     const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
     const [selectedCity, setSelectedCity] = useState<string | null>(null);
 
-    const [{ data: citiesData, isLoading: isLoadingCities }, makeRequest] = useFetch<CitiesResponse>(
+    const [{ data: citiesData, isLoading: isLoadingCities }, makeRequest] = usePost<CitiesResponse>(
         'https://countriesnow.space/api/v0.1/countries/cities'
     );
 
-    const [{ data: suggestion, isLoading: isLoadingResult, error: errorResult }, makeSuggestionRequest] = useFetch<OpenAIResponse>(
+    const [{ data: suggestion, isLoading: isLoadingResult, error: errorResult }, makeSuggestionRequest] = usePost<OpenAIResponse>(
         '/api/openai'
     );
 
@@ -39,7 +39,7 @@ const LocationSelector: React.FC = () => {
     };
 
     const generateInputValue = () => (
-        `Please generate a list of diverse activities for morning, afternoon, evening and night ${selectedCity}, ${selectedCountry}.
+        `Please generate a list of diverse activities for morning, afternoon, evening and night ${selectedCity}, ${selectedCountry}. Total 4 activities.
         Include options that showcase the local culture, nature, and cuisine, and ensure the activities are suitable for a range of interests.
         Activities should be suitable for ${getSeason()}.`
     );
@@ -51,9 +51,11 @@ const LocationSelector: React.FC = () => {
         if (errorResult) return <Typography className='mb-1' color="error">{errorResult}</Typography>;
         return (
             <div>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid container rowSpacing={2} columnSpacing={{ xs: 2 }}>
                     {suggestion?.choices?.[0]?.message.content.split('###').map((line, index) => (
-                        <ActivityCard key={index} cardKey={index} description={line} />
+                        <Grid key={index} size={{ xs: 12, md: 6 }}>
+                            <ActivityCard key={index} cardKey={index} description={line} />
+                        </Grid>
 
                     ))}
                 </Grid>

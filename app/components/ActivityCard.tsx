@@ -34,22 +34,18 @@ const ActivityCard: React.FC<ActivityCardProps> = ({ cardKey, description }) => 
     const { src, alt } = getImageAndAltText();
 
     return (
-        <div className='mb-1'>
-
-            <Card className={cardClassName} variant="outlined">
-                <CardMedia
-                    component="img"
-                    image={src}
-                    alt={alt}
-                />
-                <CardContent>
-                    <Typography variant="body2" color="textSecondary">
-                        {description}
-                    </Typography>
-                </CardContent>
-            </Card>
-
-        </div>
+        <Card className={cardClassName} variant="outlined" style={{ height: 500, overflow: 'auto' }}>
+            <CardMedia
+                component="img"
+                image={src}
+                alt={alt}
+            />
+            <CardContent>
+                <Typography variant="body2" color="textSecondary">
+                    {description}
+                </Typography>
+            </CardContent>
+        </Card>
     );
 };
 

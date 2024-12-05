@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-const useFetch = <T>(url: string) => {
+const usePost = <T>(url: string) => {
     const [data, setData] = useState<T | null>(null);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -8,7 +8,6 @@ const useFetch = <T>(url: string) => {
     const makeRequest = useCallback(async (body: Record<string, unknown>) => {
         setLoading(true);
         setError(null);
-
         try {
             const response = await fetch(url, {
                 method: 'POST',
@@ -34,4 +33,4 @@ const useFetch = <T>(url: string) => {
     return [{ data, isLoading, error }, makeRequest] as const;
 };
 
-export default useFetch;
+export default usePost;
